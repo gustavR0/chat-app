@@ -3,8 +3,20 @@ import { PublicRoute } from './PublicRoute'
 import { PrivateRoute } from './PrivateRoute'
 import Public from './Public'
 import { Private } from './Private'
+import { useContext, useEffect } from 'react'
+import { AuthContext } from '../auth/AuthContext'
 
 export const AppRouter = () => {
+  const { verificaToken, auth } = useContext(AuthContext)
+
+  useEffect(() => {
+    verificaToken()
+  }, [verificaToken])
+
+  if (auth.checking) {
+    return <h1>loading</h1>
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -25,7 +37,6 @@ export const AppRouter = () => {
             }
         />
       </Routes>
-
     </BrowserRouter>
   )
 }

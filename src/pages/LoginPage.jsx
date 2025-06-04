@@ -8,7 +8,7 @@ export const LoginPages = () => {
 
   const { valueState, handleChange, changeValueManual } = useForm({
     email: 'test1@test.com',
-    password: '123456',
+    password: '12345678',
     rememberme: false
   })
 

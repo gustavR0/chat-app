@@ -6,11 +6,12 @@ import { ChatContext } from './chat/ChatContext'
 import { types } from '../types/types'
 import { scrollToBottonAnimated } from '../helpers/scrollToBotton'
 
-const baseWsUrl = process.env.VITE_WS_URL
+const baseWsUrl = import.meta.env.VITE_WS_URL
 
 export const SocketContext = createContext()
 
 export const SocketProvider = ({ children }) => {
+  console.log(baseWsUrl)
   const { auth } = useContext(AuthContext)
   const { socket, online, conectarSocket, desconectarSocket } = useSocket(baseWsUrl)
   const { dispatch } = useContext(ChatContext)
